@@ -79,7 +79,19 @@ public class Main {
                         String column = scan.nextLine().toLowerCase();
                         System.out.println("What is the value you wish to update");
                         String value = scan.nextLine().toLowerCase();
-                        db.updateInfo(pokemonName, column, value);
+                        if (column.equals("nationalnum") || column.equals("name") || column.equals("species")) {
+                            if (column.equals("nationalnum")) {
+                                if (!isNumeric(value)) {
+                                    System.out.println("You trying to trick me with this, no no no");
+                                } else {
+                                    db.updateInfo(pokemonName, column, value);
+                                }
+                            } else {
+                                db.updateInfo(pokemonName, column, value);
+                            }
+                        } else {
+                            System.out.println("Please enter correct column");
+                        }
                         break;
                 }
 

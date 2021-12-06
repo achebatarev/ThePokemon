@@ -179,10 +179,14 @@ public class DB {
     }
 
     public void updateInfo(String name, String column, String value) throws Exception {
-        if (!column.equals("nationalNum")) {
+        if (!column.equals("nationalnum")) {
             value = String.format("'%s'", value);
         }
-        this.statement.executeUpdate(String.format("update pokemons SET %s=%s where name=%s", column, value, name));
+        System.out.println(name);
+        System.out.println(column);
+        System.out.println(value);
+
+        this.statement.executeUpdate(String.format("update pokemons SET %s=%s where Name='%s'", column, value, name));
     }
 
     protected void finalize() {
